@@ -20,8 +20,8 @@ public class Lib
             System.err.println("错误，文件未找到！");
             e.printStackTrace();
         }
-        BufferedReader br = new BufferedReader(fr);
-        return br;
+        assert fr != null;
+        return new BufferedReader(fr);
     }
 
     /*获得文章字符串*/
@@ -29,17 +29,13 @@ public class Lib
     {
         String encoding = "UTF-8";
         File file = new File(path);
-        Long filelength = file.length();
-        byte[] filecontent = new byte[filelength.intValue()];
+        long filelength = file.length();
+        byte[] filecontent = new byte[(int) filelength];
         try
         {
             FileInputStream in = new FileInputStream(file);
             in.read(filecontent);
             in.close();
-        }
-        catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
         }
         catch (IOException e)
         {
@@ -101,19 +97,19 @@ public class Lib
         this.resultStr = this.resultStr.replaceAll("[^A-Za-z0-9]", " ");
         this.resultStr = this.resultStr.toLowerCase();
         String[] words = this.resultStr.split(" ");    //分割获得所有单词
-        int sum = words.length;
+
         int count = 0;
-        for(int i = 0; i < sum; i++)
+        for (String word : words)
         {
-            if(words[i].length() > 3)
+            if (word.length() > 3)
             {
                 int j;
-                for(j = 0; j < 4; j++)
+                for (j = 0; j < 4; j++)
                 {
-                    char x = words[i].charAt(j);
-                    if(x <= 'a' && x >= 'z')  break;
+                    char x = word.charAt(j);
+                    if (x <= 'a' || x >= 'z') break;
                 }
-                if(j == 4)  count++;
+                if (j == 4) count++;
             }
         }
         this.sumWords = count;

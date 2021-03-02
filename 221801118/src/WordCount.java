@@ -22,15 +22,7 @@ public class WordCount
         Scanner scanner = new Scanner(System.in);
         path = scanner.nextLine();
         BufferedReader br = null;
-
-        try
-        {
-            br = lib.readFile(path);
-        }
-        catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }
+        br = lib.readFile(path);
 
         lib.lineCount(br, wc);
         System.out.println("文本一共有" + wc.sumLines + "行");

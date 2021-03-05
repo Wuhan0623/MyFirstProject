@@ -62,12 +62,10 @@ public class Lib
     public void charCount(String path)
     {
         this.resultStr = readToString(path);
-        this.resultStr = this.resultStr.replace('\r', ' ');
-        this.resultStr = this.resultStr.replace('\n', ' ');
         this.sumChars = this.resultStr.length();
     }
 
-    /*delete trim characters*/
+    /*delete some character*/
     public String stringTrimAll(String input)
     {
         if (null == input)
@@ -108,8 +106,6 @@ public class Lib
     public void wordCount(String path)
     {
         this.resultStr = readToString(path);
-        this.resultStr = this.resultStr.replace('\r', ' ');
-        this.resultStr = this.resultStr.replace('\n', ' ');
         this.resultStr = this.resultStr.replaceAll("[^A-Za-z0-9]", " ");
         this.resultStr = this.resultStr.toLowerCase();
         String[] words = this.resultStr.split(" ");    // divide with spaces
@@ -153,8 +149,6 @@ public class Lib
     public void wordFrequencyCount(String path)
     {
         this.resultStr = readToString(path);
-        this.resultStr = this.resultStr.replace('\r', ' ');
-        this.resultStr = this.resultStr.replace('\n', ' ');
         this.resultStr = this.resultStr.replaceAll("[^A-Za-z0-9]", " ");
         this.resultStr = this.resultStr.toLowerCase();
         String[] words = this.resultStr.split(" ");    // divide with spaces
